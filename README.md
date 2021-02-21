@@ -97,3 +97,19 @@ transformers= [
 ])
 ```
 *note: numericList and categoricalList are lists that contain numerical data and categorical data respectively by function ```select_dtypes```.*
+
+## Outcomes:
+### Confustion Matrix:
+<p align="center"><img  src="./image/4.png" alt="XGboost" width="400"/><img  src="./image/5.png" alt="RandomForest" width="400"/></p>
+The L.H.S is confusion matrix of predicted y value and true ytag by using XGBoostClassifier and the R.H.S is confusion matrix of predicted y value and true ytag by using RandomForestClassifier. In these diagrams, diagonal elements have the brightest color indicating a large proportion of classes are predicted correctly. 
+
+### parameter turning and maximum accuracy:
+<p align="center"><img  src="./image/2.png" alt="XGboost" width="400"/><img  src="./image/3.png" alt="RandomForest" width="400"/></p>
+The L.H.S is a plot for XGBoostClassifier and R.H.S is a plot for RandomForestClassifier when x-axis is the value of *n_estimators*. As result suggested, XGBoostClassifier performs better than RandomForestClassifier, achieves 65% accuracy at *n_estimators=116* while RandomForestClassifier achieves maximum 63% at *n_estimators=86*, slightly lower than that of XGBoostClassifier.
+
+## Improvements:
+1. Due to the limitation of data set, the training process may not be sufficient enough to predict testing set with high accuracy, we can find another dataset with larger size.
+2. We can do more research on price ranges such that the range is more acceptable for Airbnb, different price ranges will result in different predicted value as well. 
+3. According to the "calender" csv file, which takes seasonality into account, if we combine this attribute into consideration, this may lead to better results. 
+
+
