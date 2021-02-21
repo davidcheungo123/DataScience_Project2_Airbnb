@@ -83,7 +83,7 @@ The distribution indicates that the prices centered at 0-200, while the mean is 
 
 ### Correlation Matrix:
 <p align="center"><img  src="./image/7.png" alt="distribution" width="500"/></p>
-This is a correlation matrix with function ```heatmap```, the attributes which are highly correlated with "price" are *"accommodates", "bathrooms", "bedrooms" and "beds"*, aligned with the assumption at the beginning.
+This is a correlation matrix with heatmap function, the attributes which are highly correlated with "price" are *"accommodates", "bathrooms", "bedrooms" and "beds"*, aligned with the assumption at the beginning.
 
 ### Room Type Distribution:
 <p align="center"><img  src="./image/8.png" alt="distribution" width="500"/></p>
