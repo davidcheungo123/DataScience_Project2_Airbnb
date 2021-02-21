@@ -109,7 +109,7 @@ The L.H.S is a plot for XGBoostClassifier and R.H.S is a plot for RandomForestCl
 
 ## Improvements:
 1. Due to the limitation of data set, the training process may not be sufficient enough to predict testing set with high accuracy, we can find another dataset with larger size.
-2. We can do more research on price ranges such that the range is more acceptable for Airbnb, different price ranges will result in different predicted value as well. 
+2. We can do more research on price ranges such that the ranges are more acceptable for Airbnb, different price ranges will result in different predicted value as well. 
 3. According to the "calender" csv file, which takes seasonality into account, if we combine this attribute into consideration, this may lead to better results. 
 
 
