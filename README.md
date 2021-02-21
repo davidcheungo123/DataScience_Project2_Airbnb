@@ -38,3 +38,62 @@ df_1["price"] = df_1["price"].apply(priceCat)
 ```
 *note : More research is required to determine better price ranges for analysis/ business' usage.*
 
+"amenities" attribute contains information in string format, due to the importances of "amenities", we split each item in "amenities" into columns to make sure they
+can be encoded in later sections:
+```
+def get_val_from_list(row, column_name, value):
+    ''' Fill in dummy column for values '''
+    val = 0.0
+    try:
+        vals = row[column_name].replace('[', '').replace("'", '').replace("]", '').replace('"', '').replace('{', '').replace('}', '').split(',')
+        if value in vals:
+            val = 1.0
+    except:
+        val = 0.0
+    return val
+
+
+def split_list_into_columns(df, column_name, max_dummies_num = 10):
+    ''' Split values in columns, which contain lists (for example, amenities) '''
+
+    # get dictionary of unique values in lists across dataset rows
+    values_dict = {}
+
+    for unique_value in df[column_name].unique(): 
+        for value in unique_value.replace('[', '').replace("'", '').replace("]", '').replace('"', '').replace('{', '').replace('}', '').split(','):
+            if value in values_dict:
+                values_dict[value] = values_dict[value] + 1
+            else:
+                values_dict[value] = 0
+
+    values_sorted = sorted(values_dict.items(), key=lambda kv: kv[1], reverse = True)
+
+    # split into columns
+    for value in values_sorted[: max_dummies_num]:
+        df[column_name + '_' + value[0]] = df.apply(lambda row: get_val_from_list(row, column_name, value[0]),axis=1)
+
+    return
+
+split_list_into_columns(df_1, "amenities")
+```
+
+## Encoders and Pipeline:
+We employed one hot encoding and "constant" strategy to encode categorical data while "median" strategy was employed to encode numerical data. Afterward, we put all stategies and encoders into a pipeline to automate the machine learning process.
+
+```
+numeric_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='median'))
+    ])
+
+categorical_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+    ("onehot", OneHotEncoder(handle_unknown="ignore"))
+])
+
+preprocessor = ColumnTransformer(
+transformers= [
+    ("num", numeric_transformer, numericList),
+    ("cat", categorical_transformer, categoricalList)
+])
+```
+*note: numericList and categoricalList are lists that contain numerical data and categorical data respectively by function ```select_dtypes```.*
