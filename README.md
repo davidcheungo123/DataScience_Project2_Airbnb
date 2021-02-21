@@ -10,7 +10,7 @@ We use a number of features to do the prediction, the selected features are depi
 cols = ['accommodates', 'bathrooms', 'bedrooms', 'beds', "price", "number_of_reviews", "room_type", "host_listings_count", 
         "review_scores_location", "review_scores_rating", "minimum_nights", "guests_included", "property_type", "amenities"]
 ```
-This results came from *PCA*, which will analyze the importance index of features. We selected around 10-20 attributes so that the model will not overfit. First due to the format of attri "price" and "amenities", ```apply``` function was required to change their formats.
+This results came from *PCA*, which analyzed the importance index of features. We selected around 10-20 attributes so that the model will not overfit. First due to the format of attri "price" and "amenities", ```apply``` function was required to change their formats.
 
 <p align="center"><img  src="./image/1.png" alt="price and amenities" width="400"/></p>
 
@@ -76,6 +76,9 @@ def split_list_into_columns(df, column_name, max_dummies_num = 10):
 
 split_list_into_columns(df_1, "amenities")
 ```
+## Exploratory Data Analysis:
+### Price Distribution:
+<p align="center"><img  src="./image/6.png" alt="distribution" width="500"/></p>
 
 ## Encoders and Pipeline:
 We employed one hot encoding and "constant" strategy to encode categorical data while "median" strategy was employed to encode numerical data. Afterward, we put all stategies and encoders into a pipeline to automate the machine learning process.
