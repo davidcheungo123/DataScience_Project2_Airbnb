@@ -111,7 +111,7 @@ transformers= [
 *note: numericList and categoricalList are lists that contain numerical data and categorical data respectively by function ```select_dtypes```.*
 
 ## Outcomes:
-### Confustion Matrix:
+### Confusion Matrix:
 <p align="center"><img  src="./image/4.png" alt="XGboost" width="400"/><img  src="./image/5.png" alt="RandomForest" width="400"/></p>
 The L.H.S is confusion matrix of predicted y value and true ytag by using XGBoostClassifier and the R.H.S is confusion matrix of predicted y value and true ytag by using RandomForestClassifier. In these diagrams, diagonal elements have the brightest color indicating a large proportion of classes are predicted correctly. 
 
